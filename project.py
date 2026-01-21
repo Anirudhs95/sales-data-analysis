@@ -15,29 +15,25 @@ print(data.isnull().sum())
 # Analysis Using Pandas
 # Total Sales
 total_sales = data['Sales'].sum()
-print("Total sales:",total_sales)
 
 # Average Sales
 avg_sales = data['Sales'].mean()
-print("Average sales:",avg_sales)
 
 # Sales by Product
-by_product = data.groupby('Product')['Sales'].sum()
-print(by_product)
+groupby_product = data.groupby('Product')['Sales'].sum()
 
 # Sales by Category
-by_category = data.groupby('Category')['Sales'].sum()
-print(by_category)
+groupby_category = data.groupby('Category')['Sales'].sum()
 
 # Visualization
 # Bar Chart (Sales by Product – Matplotlib)
-by_product.plot(kind='bar')
-plt.title('Sales by product')
-plt.xlabel('Product')
-plt.ylabel('Total Sales')
+groupby_product.plot(kind='bar')
+plt.title('Total Sales by product')
+plt.xlabel('Products')
+plt.ylabel('Sales amount')
 plt.show()
 
 # Bar Plot (Sales by Category – Seaborn)
-sns.barplot(x=by_category.index, y=by_category.values)
-plt.title("Sales by category")
+sns.barplot(x=groupby_category.index, y=groupby_category.values)
+plt.title("Total Sales by category")
 plt.show()
